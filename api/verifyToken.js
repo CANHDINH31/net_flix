@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-export const verify = (req, res) => {
+const verify = (req, res, next) => {
   const authHeader = req.headers.token;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
@@ -13,3 +13,4 @@ export const verify = (req, res) => {
     return res.status(401).json("You are not authenticated");
   }
 };
+module.exports = verify;
